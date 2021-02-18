@@ -102,11 +102,9 @@ biases = {
 # conv1 layer with biases and relu : 64 filters with size 9 x 9
 
 conv1 = tf.nn.relu(tf.nn.conv2d(inputs,weights.get("w1"),[1,1,1,1],padding="VALID",use_cudnn_on_gpu=True)+biases.get("b1"))
-##------ Add your code here: to compute non-linear mapping
 # conv2 layer with biases and relu: 32 filters with size 1 x 1
 
 conv2 = tf.nn.relu(tf.nn.conv2d(conv1,weights.get("w2"),[1,1,1,1],padding="VALID",use_cudnn_on_gpu=True)+biases.get("b2"))
-##------ Add your code here: compute the reconstruction of high-resolution image
 # conv3 layer with biases and NO relu: 1 filter with size 5 x 5
 conv3 = tf.nn.conv2d(conv2,weights.get("w3"),[1,1,1,1],padding="VALID",use_cudnn_on_gpu=True)+biases.get("b3")
 
