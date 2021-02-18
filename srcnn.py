@@ -78,7 +78,6 @@ tf.reset_default_graph()
 # define the placeholders for inputs and outputs
 inputs = tf.placeholder(tf.float32, [None, input_size, input_size, c_dim], name='inputs')
 
-## ------ Add your code here: set the weight of three conv layers
 # replace '0' with your hyper parameter numbers 
 # conv1 layer with biases: 64 filters with size 9 x 9
 # conv2 layer with biases and relu: 32 filters with size 1 x 1
@@ -98,7 +97,7 @@ biases = {
 
 """Define the model layers with three convolutional layers
 """
-## ------ Add your code here: to compute feature maps of input low-resolution images
+
 # replace 'None' with your layers: use the tf.nn.conv2d() and tf.nn.relu()
 # conv1 layer with biases and relu : 64 filters with size 9 x 9
 
@@ -117,7 +116,6 @@ conv3 = tf.nn.conv2d(conv2,weights.get("w3"),[1,1,1,1],padding="VALID",use_cudnn
 model_path='./model/model.npy'
 model = np.load(model_path, encoding='latin1').item()
 
-##------ Add your code here: show the weights of model and try to visualisa
 # variabiles (w1, w2, w3)
 
 
@@ -153,13 +151,6 @@ output_conv1 = sess.run(conv1, feed_dict={inputs: input_})
 output_conv2 = sess.run(conv2, feed_dict={inputs: input_})
 
 sess.close()
-
-
-
-
-
-##------ Add your code here: save the blurred and SR images and compute the psnr
-# hints: use the 'scipy.misc.imsave()'  and ' skimage.meause.compare_psnr()'
 
 # Displaying Ground Truth image
 Disp_Image(groudtruth_image[6:249, 6:249], 'Original')
